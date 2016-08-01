@@ -28,7 +28,7 @@ app.get('/', function(req, res) {
 app.get('/namegen', function(req, res) {
     
     var allowSpace = undefined;
-    if (req.query.allowSpace.length > 0 && (req.query.allowSpace == 'false' || req.query.allowSpace == 0))
+    if (req.query.allowSpace && req.query.allowSpace.length > 0 && (req.query.allowSpace == 'false' || req.query.allowSpace == 0))
         allowSpace = {hasSpace: false};
     // number of entries in db, could be retrieved with db.count()
     const rand = Math.floor(Math.random() * 708);
