@@ -1,0 +1,28 @@
+{
+  "name": "woods",
+  "version": "0.1.0",
+  "description": "All-in-one app for various small services",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dave-woods/woods.git"
+  },
+  "keywords": [
+    "app",
+    "small",
+    "services"
+  ],
+  "author": "Dave Woods",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dave-woods/woods/issues"
+  },
+  "homepage": "https://github.com/dave-woods/woods#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
