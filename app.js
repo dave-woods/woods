@@ -4,8 +4,14 @@ const app = express();
 const port = process.env.PORT || 8080;
 const path = require('path');
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
+app.engine('hbs', exphbs({
+    defaultLayout: 'main',
+    extname: 'hbs',
+    layoutsDir: path.join(__dirname, 'views/layouts')
+}));
+
+app.set('view engine', 'hbs');
+
 app.use('/public', express.static('public'));
 
 app.get('/', function(req, res) {
