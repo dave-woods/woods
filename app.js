@@ -26,7 +26,12 @@ app.get('/', function(req, res) {
 });
 
 app.get('/namegen', function(req, res) {
-    const rand = Math.floor(Math.random() * 708); // number of entries in db, could be retrieved with db.count()
+    
+    var allowSpace = undefined;
+    if (req.query.allowSpace.length > 0 && (req.query.allowSpace == 'false' || req.query.allowSpace == 0))
+        allowSpace = {hasSpace: false};
+    // number of entries in db, could be retrieved with db.count()
+    const rand = Math.floor(Math.random() * 708);
     const mongo = require('mongodb').MongoClient;
     mongo.connect(process.env.MONGOLAB_URI, function (err, db) {
         if (err)
@@ -34,13 +39,12 @@ app.get('/namegen', function(req, res) {
         else
         {
             db.collection('projectNames')
-                .find()
+                .find(allowSpace)
                 .limit(-1)
                 .skip(rand)
                 .next()
                 .then(function(result) {
                     db.close();
-                    //console.log(result);
                     res.json({id: rand, name: result.name, hasSpace: result.hasSpace});
                 }, function(err) {
                     db.close();
