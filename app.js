@@ -9,7 +9,15 @@ app.set('view engine', 'handlebars');
 app.use('/public', express.static('public'));
 
 app.get('/', function(req, res) {
-	res.render('index');
+	res.render('index', {title: 'woodsapp'});
+});
+
+app.get('/about', function(req, res) {
+    res.render('about', {title: 'woodsapp'});
+});
+
+app.get('/hello/:name', function(req, res) {
+    res.render('hello', {title: 'woodsapp', name: req.params.name});
 });
 
 app.listen(port, function(err) {
