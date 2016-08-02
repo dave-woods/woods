@@ -3,9 +3,31 @@
         <title>
             {{ title }}
         </title>
+        <link rel="stylesheet" href="/css/main.css"/>
     </head>
     <body>
+        <header class="main-header">
+            <nav>
+                <ul>
+                    <a href="/">
+                        <li>
+                            Home
+                        </li>
+                    </a>
+                    <a href="/about">
+                        <li>
+                            About
+                        </li>
+                    </a>
+                    <a href="/namegen">
+                        <li>
+                            Name Generator
+                        </li>
+                    </a>
+                </ul>
+            </nav>
+        </header>
         <h1>Welcome to {{ title }}</h1>
-        {{{body}}}
+        {{{ body }}}
     </body>
 </html>

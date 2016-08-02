@@ -1,0 +1,31 @@
+:root {
+  font-family: arial;
+  font-size: 16px;
+  color: #333333; }
+  :root a {
+    color: #333333;
+    text-decoration: none; }
+    :root a:hover {
+      color: #999999;
+      text-decoration: underline; }
+
+body {
+  margin: 0; }
+
+p {
+  margin: 0.5rem; }
+
+.main-header {
+  background-color: palegoldenrod;
+  height: 60px; }
+  .main-header nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    padding: 20px 30px 20px 30px;
+    margin: 0; }
+
+h1 {
+  text-align: center; }
+
+/*# sourceMappingURL=main.css.map */
