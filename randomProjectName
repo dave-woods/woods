@@ -1,2 +1,0 @@
-n=$(curl 'https://woods.herokuapp.com/namegen?allowSpace=0' | jq '.name' | sed 's/^.*\"\(.\+\)\".*$/\1/g');
-mkdir $n;
