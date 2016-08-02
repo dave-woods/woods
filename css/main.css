@@ -4,10 +4,10 @@
   color: #333333; }
   :root a {
     color: #333333;
-    text-decoration: none; }
+    text-decoration: underline; }
     :root a:hover {
       color: #999999;
-      text-decoration: underline; }
+      text-decoration: none; }
 
 body {
   margin: 0; }
@@ -26,7 +26,8 @@ p {
     margin: 0;
     padding: 0; }
     .main-header nav ul a {
-      padding: 20px 40px; }
+      padding: 20px 40px;
+      text-decoration: none; }
       .main-header nav ul a:hover {
         color: #333333;
         background-color: rgba(255, 255, 255, 0.2); }
