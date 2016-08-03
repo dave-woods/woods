@@ -1,5 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 8080;
 const path = require('path');
@@ -14,14 +15,21 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs');
 app.use('/public', express.static('public'));
 app.use('/css', express.static('css'));
+app.use(bodyParser.json()); // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({extended: true})); // to support URL-encoded bodies
 
 app.get('/', function(req, res) {
 	res.render('index', {title: appTitle});
 });
 
-app.get('/namegen', function(req, res) {
+app.post('/', function(req, res) {
+    res.send('Posted to the homepage of WoodsApp!\n');
+});
+
+app.post('/namegen', function(req, res) {
+    // console.log('q:', req.query, 'p:', req.params, 'b:', req.body.noSpace);
     var allowSpace = undefined;
-    if (req.query.allowSpace && req.query.allowSpace.length > 0 && (req.query.allowSpace == 'false' || req.query.allowSpace == 0))
+    if (req.body.noSpace !== undefined)
         allowSpace = {hasSpace: false};
     // number of entries in db, could be retrieved with db.count()
     const rand = Math.floor(Math.random() * 708);
