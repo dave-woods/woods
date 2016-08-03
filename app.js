@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 const path = require('path');
 
-const appTitle = 'WoodsApp';
+const appTitle = 'Welcome to WoodsApp';
 
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
@@ -19,11 +19,11 @@ app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({extended: true})); // to support URL-encoded bodies
 
 app.get('/', function(req, res) {
-	res.render('index', {title: appTitle});
+	res.render('index', {title: appTitle, urlHost: req.protocol + '://' + req.get('host')});
 });
 
 app.post('/', function(req, res) {
-    res.send('Posted to the homepage of WoodsApp!\n');
+    res.send('Posted to the homepage of WoodsApp! It wasn\'t very effective...\n');
 });
 
 app.post('/namegen', function(req, res) {
@@ -66,4 +66,12 @@ app.get('/hello/:name', function(req, res) {
 app.listen(port, function(err) {
     if (err) throw err;
 	console.log(`The app is listening on port ${port}`);
+});
+
+app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+app.use(function(req, res, next) {
+    res.status(404).render('404', {title: 'Error: Route Not Found'});
 });
